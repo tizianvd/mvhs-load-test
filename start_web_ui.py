@@ -58,7 +58,7 @@ def main():
     
     # Default configuration
     host = "0.0.0.0"
-    port = 80
+    port = 8080
     target_url = "https://www.mvhs.de"
     processes = multiprocessing.cpu_count()  # Use all available CPU cores
     

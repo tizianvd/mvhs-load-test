@@ -62,4 +62,4 @@ print("  • MVHSMobileUser - Touch-optimized behavior")
 print("="*60)
 
 # For Locust web UI, you can now start with:
-# python -m locust --web-host=0.0.0.0 --web-port=80
+# python -m locust --web-host=0.0.0.0 --web-port=8080
