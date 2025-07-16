@@ -60,7 +60,7 @@ class MVHSActiveUser(BaseWebsiteUser):
     wait_time = between(5, 15) 
     weight = 16 
     
-    @task(9)
+    @task(11)
     def perform_search(self):
         """Perform searches frequently."""
         result = self.search_tasks.perform_search()
@@ -70,7 +70,7 @@ class MVHSActiveUser(BaseWebsiteUser):
                 self.navigation_tasks.view_course_details()
             self.wait_for_reading()
     
-    @task(0)
+    @task(4)
     def browse_categories_thoroughly(self):
         """Browse categories and subcategories."""
         result = self.navigation_tasks.browse_categories()
@@ -80,19 +80,19 @@ class MVHSActiveUser(BaseWebsiteUser):
                 self.navigation_tasks.browse_subcategories()
             self.wait_for_reading()
     
-    @task(0)
+    @task(3)
     def search_by_category(self):
         """Search within specific categories."""
         result = self.search_tasks.search_courses_by_category()
         if result:
             self.wait_for_reading()
     
-    @task(0)
+    @task(1)
     def browse_homepage(self):
         """Visit homepage."""
         self.navigation_tasks.visit_homepage()
 
-    @task(0)
+    @task(1)
     def visit_static_pages(self):
         """Visit static informational pages."""
         result = self.navigation_tasks.visit_static_pages()
