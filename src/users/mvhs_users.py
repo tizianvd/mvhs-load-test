@@ -63,15 +63,14 @@ class MVHSActiveUser(BaseWebsiteUser):
     @task(9)
     def perform_search(self):
         """Perform searches frequently."""
-        if random.random() < 0.7:  # 70% chance to search
-            result = self.search_tasks.perform_search()
-            if result and result.get('has_results'):
-                # Might look at first few results
-                if random.random() < 0.6:
-                    self.navigation_tasks.view_course_details()
-                self.wait_for_reading()
+        result = self.search_tasks.perform_search()
+        if result and result.get('has_results'):
+            # Might look at first few results
+            if random.random() < 0.6:
+                self.navigation_tasks.view_course_details()
+            self.wait_for_reading()
     
-    @task(2)
+    @task(0)
     def browse_categories_thoroughly(self):
         """Browse categories and subcategories."""
         result = self.navigation_tasks.browse_categories()
@@ -81,19 +80,19 @@ class MVHSActiveUser(BaseWebsiteUser):
                 self.navigation_tasks.browse_subcategories()
             self.wait_for_reading()
     
-    @task(3)
+    @task(0)
     def search_by_category(self):
         """Search within specific categories."""
         result = self.search_tasks.search_courses_by_category()
         if result:
             self.wait_for_reading()
     
-    @task(1)
+    @task(0)
     def browse_homepage(self):
         """Visit homepage."""
         self.navigation_tasks.visit_homepage()
 
-    @task(1)
+    @task(0)
     def visit_static_pages(self):
         """Visit static informational pages."""
         result = self.navigation_tasks.visit_static_pages()

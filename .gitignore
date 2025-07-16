@@ -37,7 +37,6 @@ venv.bak/
 reports/
 *.html
 *.csv
-!requirements.txt
 !stress_test_config.json
 
 # Locust specific files
@@ -64,6 +63,9 @@ locust*.log
 !README.txt
 !README.md
 !*.md
+
+## still allow requirements.txt to be tracked
+!requirements.txt
 
 # IDE and Editor Files
 .vscode/settings.json

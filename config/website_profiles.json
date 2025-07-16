@@ -56,13 +56,6 @@
           ]
         }
       ],
-      "search_terms": [
-        "Deutsch", "Englisch", "Yoga", "Kochen", "Computer", "Excel", 
-        "Spanisch", "Französisch", "Fotografie", "Meditation", "Fitness",
-        "Python", "JavaScript", "Marketing", "BWL", "Rhetorik", "Präsentation",
-        "Gitarre", "Piano", "Malerei", "Zeichnen", "Töpfern", "Nähen",
-        "Geschichte", "Philosophie", "Psychologie", "Astronomie"
-      ],
       "request_settings": {
         "timeout": 30,
         "retry_count": 3,
@@ -101,9 +94,6 @@
           ]
         }
       ],
-      "search_terms": [
-        "Test", "Demo", "Sample", "Development", "Staging"
-      ],
       "request_settings": {
         "timeout": 60,
         "retry_count": 5,
@@ -140,9 +130,6 @@
             "staging-subcategory-001-CAT-STAGESUB001"
           ]
         }
-      ],
-      "search_terms": [
-        "Staging", "Test", "Preview", "Beta"
       ],
       "request_settings": {
         "timeout": 45,

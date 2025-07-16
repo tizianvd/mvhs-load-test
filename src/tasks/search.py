@@ -12,6 +12,7 @@ from typing import Dict, Any, Optional, List
 from locust import task
 from bs4 import BeautifulSoup
 from src.core.metrics import metrics_collector
+from src.utils.search_utils import get_random_german_word
 
 
 class SearchTasks:
@@ -27,10 +28,7 @@ class SearchTasks:
         self.user = user_instance
         self.profile = getattr(user_instance, 'profile', {})
         self.endpoints = self.profile.get('endpoints', {})
-        self.search_terms = self.profile.get('search_terms', [
-            "schule", "unterricht", "lehrer", "student", "abitur", "klausur",
-            "ferien", "termine", "anmeldung", "kontakt", "impressum", "news"
-        ])
+        
     
     def perform_search(self, search_term: Optional[str] = None) -> Optional[Dict[str, Any]]:
         """
@@ -42,21 +40,22 @@ class SearchTasks:
         Returns:
             Search results data dictionary or None if failed
         """
-        if search_term is None:
-            search_term = random.choice(self.search_terms)
+
+        search_term = get_random_german_word()
+        search_term = search_term.upper()
         
         search_endpoint = self.endpoints.get('search', '/suche')
         
         # Add cache-busting parameter
         cache_buster = random.randint(100, 999999)
-        search_url = f"{search_endpoint}?q={urllib.parse.quote(search_term)}_cb{cache_buster}"
+        search_url = f"{search_endpoint}?q={urllib.parse.quote(search_term)}"
         
         start_time = time.time()
         
         try:
             with self.user.client.get(search_url,
                                      catch_response=True,
-                                     name=f"Search: {search_term}_cb{cache_buster}") as response:
+                                     name=f"Search: {search_term}") as response:
                 
                 response_time = (time.time() - start_time) * 1000
                 
@@ -83,7 +82,7 @@ class SearchTasks:
                     
                     return {
                         'status_code': response.status_code,
-                        'search_term': f"{search_endpoint}?q={urllib.parse.quote(search_term)}_cb{cache_buster}",
+                        'search_term': f"{search_endpoint}?q={urllib.parse.quote(search_term)}",
                         'response_time': response_time,
                         **results_data
                     }
@@ -308,7 +307,7 @@ class SearchTasks:
         
         # Random search term
         if random.random() < 0.7:  # 70% chance to include search term
-            params['q'] = random.choice(self.search_terms)
+            params['q'] = get_random_german_word()
         
         # Random category filter
         categories = self.profile.get('categories', [])
@@ -329,7 +328,7 @@ class SearchTasks:
         search_endpoint = self.endpoints.get('search', '/suche')
         query_string = urllib.parse.urlencode(params)
         cache_buster = random.randint(100, 999999)
-        search_url = f"{search_endpoint}?{query_string}_cb{cache_buster}"
+        search_url = f"{search_endpoint}?{query_string}"
         
         start_time = time.time()
         

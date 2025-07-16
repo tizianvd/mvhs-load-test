@@ -7,7 +7,7 @@ inherit from, with common functionality and behavior patterns.
 
 import random
 import time
-from locust import HttpUser, between
+from locust import between, FastHttpUser
 from typing import Dict, Any, Optional
 
 from src.config.profiles import WebsiteProfileManager
@@ -41,7 +41,7 @@ GERMAN_LAST_NAMES = [
 ]
 
 
-class BaseWebsiteUser(HttpUser):
+class BaseWebsiteUser(FastHttpUser):
     """Base user class for website load testing."""
     
     abstract = True  # This prevents Locust from using this class directly
