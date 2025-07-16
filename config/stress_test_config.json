@@ -105,12 +105,12 @@
     "normal_user": {
       "name": "Normal User Behavior",
       "description": "Standard user behavior for typical load testing",
-      "wait_time_min": 0,
-      "wait_time_max": 0,
-      "reading_time_min": 0,
-      "reading_time_max": 0,
-      "navigation_pause_min": 0,
-      "navigation_pause_max": 0,
+      "wait_time_min": 2,
+      "wait_time_max": 4,
+      "reading_time_min": 5,
+      "reading_time_max": 12,
+      "navigation_pause_min": 1,
+      "navigation_pause_max": 2,
       "search_probability": 1
     },
     "fast_user": {
