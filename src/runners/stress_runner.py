@@ -52,7 +52,7 @@ class StressTestRunner:
         
         # Default configuration
         self.default_profile = "mvhs_production"
-        self.default_web_port = 8089
+        self.default_web_port = 80
         self.default_web_host = "0.0.0.0"
     
     def list_available_tests(self) -> None:
@@ -204,7 +204,7 @@ class StressTestRunner:
         Args:
             profile_name: Website profile to use (optional)
             host_override: Override the host URL (optional)  
-            port: Web UI port (default 8089)
+            port: Web UI port (default 80)
             
         Returns:
             True if web UI started successfully, False otherwise
@@ -389,8 +389,8 @@ Examples:
     parser.add_argument(
         '--port',
         type=int,
-        default=8089,
-        help='Port for web UI (default: 8089)'
+        default=80,
+        help='Port for web UI (default: 80)'
     )
     
     parser.add_argument(

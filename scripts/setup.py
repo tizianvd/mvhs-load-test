@@ -182,7 +182,7 @@ def show_quick_start_guide():
     
     print("\n3. 🌐 Start the web UI:")
     print("   python stress_test_runner_new.py web")
-    print("   Then open: http://localhost:8089")
+    print("   Then open: http://localhost:80")
     
     print("\n4. 📊 Generate a report:")
     print("   python generate_report_new.py")

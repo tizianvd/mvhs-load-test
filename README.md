@@ -13,7 +13,7 @@ python start_web_ui.py
 
 ### Option 2: Direct Locust Command
 ```bash
-python -m locust --web-host=0.0.0.0 --web-port=8089 --host=https://www.mvhs.de
+python -m locust --web-host=0.0.0.0 --web-port=80 --host=https://www.mvhs.de
 ```
 
 ### Option 3: Using VS Code Tasks
@@ -25,7 +25,7 @@ Use the **"Start Locust Web UI"** task from the VS Code command palette:
 ## Web Interface Usage
 
 1. **Start the web interface** using one of the methods above
-2. **Open your browser** to `http://localhost:8089`
+2. **Open your browser** to `http://localhost:80`
 3. **Configure your test**:
    - **Number of users**: Start with 10-50 users
    - **Spawn rate**: Start with 2-5 users per second
