@@ -1,11 +1,12 @@
 {
-  "stress_tests": {
+  "test_configurations": {
     "light_stress": {
       "name": "Light Stress Test",
       "description": "Light load testing for basic functionality",
       "users": 5,
       "spawn_rate": 1,
       "duration": "1m",
+      "user_behavior": "normal_user",
       "search_intensity": "low",
       "scenarios": ["search", "browse"]
     },
@@ -15,6 +16,7 @@
       "users": 10,
       "spawn_rate": 2,
       "duration": "2m",
+      "user_behavior": "normal_user",
       "search_intensity": "low",
       "scenarios": ["search", "browse"]
     },
@@ -24,6 +26,7 @@
       "users": 25,
       "spawn_rate": 5,
       "duration": "5m",
+      "user_behavior": "active_user",
       "search_intensity": "medium",
       "scenarios": ["search", "browse", "deep_navigation"]
     },
@@ -32,7 +35,8 @@
       "description": "Heavy load testing for peak traffic simulation",
       "users": 50,
       "spawn_rate": 10,
-      "duration": "10m", 
+      "duration": "10m",
+      "user_behavior": "power_user",
       "search_intensity": "high",
       "scenarios": ["search", "browse", "deep_navigation", "form_interaction"]
     },
@@ -42,6 +46,7 @@
       "users": 100,
       "spawn_rate": 50,
       "duration": "3m",
+      "user_behavior": "power_user",
       "search_intensity": "extreme",
       "scenarios": ["search", "browse"]
     },
@@ -51,34 +56,8 @@
       "users": 500,
       "spawn_rate": 100,
       "duration": "2m",
+      "user_behavior": "stress_test",
       "search_intensity": "ultra_fast",
-      "scenarios": ["search", "browse"]
-    },
-    "mega_spike_test": {
-      "name": "Mega Spike Test",
-      "description": "Ultra-high concurrency test with 1000+ users",
-      "users": 1000,
-      "spawn_rate": 200,
-      "duration": "3m",
-      "search_intensity": "cpu_killer",
-      "scenarios": ["search", "browse"]
-    },
-    "concurrency_test": {
-      "name": "Maximum Concurrency Test",
-      "description": "Test for maximum concurrent connections",
-      "users": 2000,
-      "spawn_rate": 400,
-      "duration": "5m",
-      "search_intensity": "ultra_fast",
-      "scenarios": ["search", "browse"]
-    },
-    "cpu_maxout_test": {
-      "name": "CPU Maxout Test",
-      "description": "Maximum CPU utilization test with aggressive request patterns",
-      "users": 1000,
-      "spawn_rate": 200,
-      "duration": "3m",
-      "search_intensity": "cpu_killer",
       "scenarios": ["search", "browse"]
     },
     "endurance_test": {
@@ -87,6 +66,7 @@
       "users": 20,
       "spawn_rate": 2,
       "duration": "30m",
+      "user_behavior": "normal_user",
       "search_intensity": "medium",
       "scenarios": ["search", "browse", "deep_navigation"]
     },
@@ -96,6 +76,7 @@
       "users": 30,
       "spawn_rate": 5,
       "duration": "5m",
+      "user_behavior": "active_user",
       "search_intensity": "extreme",
       "scenarios": ["search"]
     },
@@ -105,6 +86,7 @@
       "users": 15,
       "spawn_rate": 3,
       "duration": "5m",
+      "user_behavior": "normal_user",
       "search_intensity": "medium",
       "scenarios": ["search", "browse", "deep_navigation"]
     }
@@ -119,6 +101,17 @@
       "reading_time_max": 15,
       "navigation_pause_min": 1,
       "navigation_pause_max": 3
+    },
+    "normal_user": {
+      "name": "Normal User Behavior",
+      "description": "Standard user behavior for typical load testing",
+      "wait_time_min": 2,
+      "wait_time_max": 5,
+      "reading_time_min": 5,
+      "reading_time_max": 15,
+      "navigation_pause_min": 1,
+      "navigation_pause_max": 2,
+      "search_probability": 0.5
     },
     "fast_user": {
       "name": "Fast User Behavior", 
@@ -159,50 +152,6 @@
       "reading_time_max": 0.1,
       "navigation_pause_min": 0,
       "navigation_pause_max": 0.1
-    }
-  },
-  "search_intensities": {
-    "low": {
-      "searches_per_session": 3,
-      "search_delay_min": 3,
-      "search_delay_max": 8,
-      "complex_searches": 0.2
-    },
-    "medium": {
-      "searches_per_session": 5,
-      "search_delay_min": 2,
-      "search_delay_max": 6,
-      "complex_searches": 0.4
-    },
-    "high": {
-      "searches_per_session": 8,
-      "search_delay_min": 1,
-      "search_delay_max": 4,
-      "complex_searches": 0.6
-    },
-    "extreme": {
-      "searches_per_session": 12,
-      "search_delay_min": 0.5,
-      "search_delay_max": 2,
-      "complex_searches": 0.8
-    },
-    "extreme_spike": {
-      "searches_per_session": 20,
-      "search_delay_min": 0.01,
-      "search_delay_max": 0.5,
-      "complex_searches": 1.0
-    },
-    "ultra_fast": {
-      "searches_per_session": 300,
-      "search_delay_min": 0.001,
-      "search_delay_max": 0.01,
-      "complex_searches": 0.02
-    },
-    "cpu_killer": {
-      "searches_per_session": 500,
-      "search_delay_min": 0.001,
-      "search_delay_max": 0.005,
-      "complex_searches": 0.01
     }
   }
 }
