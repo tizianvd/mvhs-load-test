@@ -1,0 +1,208 @@
+{
+  "stress_tests": {
+    "light_stress": {
+      "name": "Light Stress Test",
+      "description": "Light load testing for basic functionality",
+      "users": 5,
+      "spawn_rate": 1,
+      "duration": "1m",
+      "search_intensity": "low",
+      "scenarios": ["search", "browse"]
+    },
+    "basic_performance_validation": {
+      "name": "Basic Performance Validation",
+      "description": "Basic performance validation with moderate load",
+      "users": 10,
+      "spawn_rate": 2,
+      "duration": "2m",
+      "search_intensity": "low",
+      "scenarios": ["search", "browse"]
+    },
+    "medium_stress": {
+      "name": "Medium Stress Test", 
+      "description": "Medium load testing for typical usage patterns",
+      "users": 25,
+      "spawn_rate": 5,
+      "duration": "5m",
+      "search_intensity": "medium",
+      "scenarios": ["search", "browse", "deep_navigation"]
+    },
+    "heavy_stress": {
+      "name": "Heavy Stress Test",
+      "description": "Heavy load testing for peak traffic simulation",
+      "users": 50,
+      "spawn_rate": 10,
+      "duration": "10m", 
+      "search_intensity": "high",
+      "scenarios": ["search", "browse", "deep_navigation", "form_interaction"]
+    },
+    "spike_test": {
+      "name": "Spike Test",
+      "description": "Sudden traffic spike simulation",
+      "users": 100,
+      "spawn_rate": 50,
+      "duration": "3m",
+      "search_intensity": "extreme",
+      "scenarios": ["search", "browse"]
+    },
+    "extreme_spike_test": {
+      "name": "Extreme Spike Test",
+      "description": "Extreme traffic spike simulation for stress limits",
+      "users": 500,
+      "spawn_rate": 100,
+      "duration": "2m",
+      "search_intensity": "ultra_fast",
+      "scenarios": ["search", "browse"]
+    },
+    "mega_spike_test": {
+      "name": "Mega Spike Test",
+      "description": "Ultra-high concurrency test with 1000+ users",
+      "users": 1000,
+      "spawn_rate": 200,
+      "duration": "3m",
+      "search_intensity": "cpu_killer",
+      "scenarios": ["search", "browse"]
+    },
+    "concurrency_test": {
+      "name": "Maximum Concurrency Test",
+      "description": "Test for maximum concurrent connections",
+      "users": 2000,
+      "spawn_rate": 400,
+      "duration": "5m",
+      "search_intensity": "ultra_fast",
+      "scenarios": ["search", "browse"]
+    },
+    "cpu_maxout_test": {
+      "name": "CPU Maxout Test",
+      "description": "Maximum CPU utilization test with aggressive request patterns",
+      "users": 1000,
+      "spawn_rate": 200,
+      "duration": "3m",
+      "search_intensity": "cpu_killer",
+      "scenarios": ["search", "browse"]
+    },
+    "endurance_test": {
+      "name": "Endurance Test",
+      "description": "Long-running stability test",
+      "users": 20,
+      "spawn_rate": 2,
+      "duration": "30m",
+      "search_intensity": "medium",
+      "scenarios": ["search", "browse", "deep_navigation"]
+    },
+    "search_focused": {
+      "name": "Search-Focused Test",
+      "description": "Intensive search functionality testing",
+      "users": 30,
+      "spawn_rate": 5,
+      "duration": "5m",
+      "search_intensity": "extreme",
+      "scenarios": ["search"]
+    },
+    "custom": {
+      "name": "Custom Test Configuration",
+      "description": "Fully customizable test parameters",
+      "users": 15,
+      "spawn_rate": 3,
+      "duration": "5m",
+      "search_intensity": "medium",
+      "scenarios": ["search", "browse", "deep_navigation"]
+    }
+  },
+  "user_behavior": {
+    "realistic": {
+      "name": "Realistic User Behavior",
+      "description": "Simulates realistic user behavior with proper think times",
+      "wait_time_min": 2,
+      "wait_time_max": 8,
+      "reading_time_min": 5,
+      "reading_time_max": 15,
+      "navigation_pause_min": 1,
+      "navigation_pause_max": 3
+    },
+    "fast_user": {
+      "name": "Fast User Behavior", 
+      "description": "Simulates experienced users with faster interactions",
+      "wait_time_min": 1,
+      "wait_time_max": 4,
+      "reading_time_min": 2,
+      "reading_time_max": 8,
+      "navigation_pause_min": 0.5,
+      "navigation_pause_max": 2
+    },
+    "slow_user": {
+      "name": "Slow User Behavior",
+      "description": "Simulates careful users who take time to read and think",
+      "wait_time_min": 5,
+      "wait_time_max": 15,
+      "reading_time_min": 10,
+      "reading_time_max": 30,
+      "navigation_pause_min": 2,
+      "navigation_pause_max": 5
+    },
+    "mobile_user": {
+      "name": "Mobile User Behavior",
+      "description": "Simulates mobile users with typical mobile interaction patterns",
+      "wait_time_min": 3,
+      "wait_time_max": 10,
+      "reading_time_min": 8,
+      "reading_time_max": 20,
+      "navigation_pause_min": 1.5,
+      "navigation_pause_max": 4
+    },
+    "stress_test": {
+      "name": "Stress Test Mode",
+      "description": "Minimal wait times for stress testing (current behavior)",
+      "wait_time_min": 0,
+      "wait_time_max": 0.1,
+      "reading_time_min": 0,
+      "reading_time_max": 0.1,
+      "navigation_pause_min": 0,
+      "navigation_pause_max": 0.1
+    }
+  },
+  "search_intensities": {
+    "low": {
+      "searches_per_session": 3,
+      "search_delay_min": 3,
+      "search_delay_max": 8,
+      "complex_searches": 0.2
+    },
+    "medium": {
+      "searches_per_session": 5,
+      "search_delay_min": 2,
+      "search_delay_max": 6,
+      "complex_searches": 0.4
+    },
+    "high": {
+      "searches_per_session": 8,
+      "search_delay_min": 1,
+      "search_delay_max": 4,
+      "complex_searches": 0.6
+    },
+    "extreme": {
+      "searches_per_session": 12,
+      "search_delay_min": 0.5,
+      "search_delay_max": 2,
+      "complex_searches": 0.8
+    },
+    "extreme_spike": {
+      "searches_per_session": 20,
+      "search_delay_min": 0.01,
+      "search_delay_max": 0.5,
+      "complex_searches": 1.0
+    },
+    "ultra_fast": {
+      "searches_per_session": 300,
+      "search_delay_min": 0.001,
+      "search_delay_max": 0.01,
+      "complex_searches": 0.02
+    },
+    "cpu_killer": {
+      "searches_per_session": 500,
+      "search_delay_min": 0.001,
+      "search_delay_max": 0.005,
+      "complex_searches": 0.01
+    }
+  }
+}

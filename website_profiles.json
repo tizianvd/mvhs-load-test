@@ -1,0 +1,167 @@
+{
+  "profiles": {
+    "mvhs_production": {
+      "name": "MVHS Production",
+      "description": "Production environment of Münchner Volkshochschule",
+      "base_url": "https://www.mvhs.de",
+      "endpoints": {
+        "search": "/suche",
+        "course_detail": "/kurse/",
+        "categories": "/kurse/",
+        "instructor_search": "/dozent/"
+      },
+      "categories": [
+        {
+          "name": "Gesundheit, Umwelt, Kochkultur",
+          "url": "/kurse/gesundheit-umwelt-kochkultur-460-CAT-KAT6993",
+          "subcategories": [
+            "gesundheit-entspannung-467-CAT-KAT7024",
+            "ernaehrung-kochen-466-CAT-KAT7016", 
+            "umwelt-natur-468-CAT-KAT7032"
+          ]
+        },
+        {
+          "name": "Sprachen",
+          "url": "/kurse/sprachen-455-CAT-KAT6948",
+          "subcategories": [
+            "deutsch-456-CAT-KAT6956",
+            "englisch-457-CAT-KAT6964",
+            "franzoesisch-458-CAT-KAT6972",
+            "spanisch-459-CAT-KAT6980"
+          ]
+        },
+        {
+          "name": "Beruf und Karriere",
+          "url": "/kurse/beruf-karriere-454-CAT-KAT6940",
+          "subcategories": [
+            "edv-computer-461-CAT-KAT7001",
+            "rhetorik-kommunikation-462-CAT-KAT7009"
+          ]
+        },
+        {
+          "name": "Kultur und Kreativität",
+          "url": "/kurse/kultur-kreativitaet-453-CAT-KAT6932",
+          "subcategories": [
+            "kunst-malen-zeichnen-463-CAT-KAT7040",
+            "musik-tanz-464-CAT-KAT7048",
+            "literatur-theater-465-CAT-KAT7056"
+          ]
+        },
+        {
+          "name": "Gesellschaft und Politik",
+          "url": "/kurse/gesellschaft-politik-452-CAT-KAT6924",
+          "subcategories": [
+            "geschichte-politik-469-CAT-KAT7064",
+            "philosophie-psychologie-470-CAT-KAT7072"
+          ]
+        }
+      ],
+      "search_terms": [
+        "Deutsch", "Englisch", "Yoga", "Kochen", "Computer", "Excel", 
+        "Spanisch", "Französisch", "Fotografie", "Meditation", "Fitness",
+        "Python", "JavaScript", "Marketing", "BWL", "Rhetorik", "Präsentation",
+        "Gitarre", "Piano", "Malerei", "Zeichnen", "Töpfern", "Nähen",
+        "Geschichte", "Philosophie", "Psychologie", "Astronomie"
+      ],
+      "request_settings": {
+        "timeout": 30,
+        "retry_count": 3,
+        "connection_pool_size": 20,
+        "user_agent": "MVHS-LoadTest/1.0",
+        "headers": {
+          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+          "Accept-Language": "de-DE,de;q=0.9,en;q=0.8",
+          "Accept-Encoding": "gzip, deflate, br"
+        }
+      },
+      "performance_thresholds": {
+        "response_time_p95": 3000,
+        "response_time_p99": 5000,
+        "error_rate_max": 5.0,
+        "availability_min": 99.0
+      }
+    },
+    "mvhs_development": {
+      "name": "MVHS Development",
+      "description": "Development environment of Münchner Volkshochschule",
+      "base_url": "https://dev.mvhs.emsnetz.de",
+      "endpoints": {
+        "search": "/suche",
+        "course_detail": "/kurse/",
+        "categories": "/kurse/",
+        "instructor_search": "/dozent/"
+      },
+      "categories": [
+        {
+          "name": "Test Category",
+          "url": "/kurse/test-category-001-CAT-TEST001",
+          "subcategories": [
+            "test-subcategory-001-CAT-TESTSUB001",
+            "test-subcategory-002-CAT-TESTSUB002"
+          ]
+        }
+      ],
+      "search_terms": [
+        "Test", "Demo", "Sample", "Development", "Staging"
+      ],
+      "request_settings": {
+        "timeout": 60,
+        "retry_count": 5,
+        "connection_pool_size": 10,
+        "user_agent": "MVHS-LoadTest-Dev/1.0",
+        "headers": {
+          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+          "Accept-Language": "de-DE,de;q=0.9,en;q=0.8",
+          "Accept-Encoding": "gzip, deflate, br"
+        }
+      },
+      "performance_thresholds": {
+        "response_time_p95": 5000,
+        "response_time_p99": 8000,
+        "error_rate_max": 10.0,
+        "availability_min": 95.0
+      }
+    },
+    "mvhs_staging": {
+      "name": "MVHS Staging",
+      "description": "Staging environment for testing new features",
+      "base_url": "https://staging.mvhs.de",
+      "endpoints": {
+        "search": "/suche",
+        "course_detail": "/kurse/",
+        "categories": "/kurse/",
+        "instructor_search": "/dozent/"
+      },
+      "categories": [
+        {
+          "name": "Staging Test Category",
+          "url": "/kurse/staging-test-460-CAT-STAGE001",
+          "subcategories": [
+            "staging-subcategory-001-CAT-STAGESUB001"
+          ]
+        }
+      ],
+      "search_terms": [
+        "Staging", "Test", "Preview", "Beta"
+      ],
+      "request_settings": {
+        "timeout": 45,
+        "retry_count": 3,
+        "connection_pool_size": 15,
+        "user_agent": "MVHS-LoadTest-Staging/1.0",
+        "headers": {
+          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+          "Accept-Language": "de-DE,de;q=0.9,en;q=0.8",
+          "Accept-Encoding": "gzip, deflate, br"
+        }
+      },
+      "performance_thresholds": {
+        "response_time_p95": 4000,
+        "response_time_p99": 6000,
+        "error_rate_max": 7.0,
+        "availability_min": 97.0
+      }
+    }
+  },
+  "default_profile": "mvhs_production"
+}

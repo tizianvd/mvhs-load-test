@@ -1,0 +1,164 @@
+# MVHS Load Testing Project - .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Load Testing Reports and Data
+reports/
+*.html
+*.csv
+!requirements.txt
+!stress_test_config.json
+
+# Locust specific files
+*.log
+locust*.log
+
+# Metrics and Analysis Files
+*metrics_*.json
+*metrics_*.csv
+*stats*.csv
+*exceptions*.csv
+*failures*.csv
+*history*.csv
+
+# Generated Images and Charts
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# Temporary Analysis Files
+*.txt
+!README.txt
+!README.md
+!*.md
+
+# IDE and Editor Files
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating System Files
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+
+# Compressed files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Custom test configurations (optional - remove if you want to track custom configs)
+# custom_*.json
+
+# Performance monitoring files
+*.prof
+*.profile
+
+# Local database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Node.js (if you add any JS tooling later)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Keep important config files
+!.gitignore
+!tasks.json
+!launch.json

@@ -1,0 +1,333 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "MVHS Load Test - Full (5 min)",
+			"type": "shell",
+			"command": "cmd",
+			"args": ["/c", "run_test.bat"],
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "new",
+				"showReuseMessage": true,
+				"clear": false
+			},
+			"problemMatcher": [],
+			"detail": "Run full 5-minute load test with 10 concurrent users against mvhs.de"
+		},
+		{
+			"label": "MVHS Load Test - Quick (1 min)",
+			"type": "shell",
+			"command": "cmd",
+			"args": ["/c", "run_quick_test.bat"],
+			"group": "test",
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "new",
+				"showReuseMessage": true,
+				"clear": false
+			},
+			"problemMatcher": [],
+			"detail": "Run quick 1-minute load test with 5 concurrent users against mvhs.de"
+		},
+		{
+			"label": "🔥 Stress Test - Light",
+			"type": "shell",
+			"command": "python",
+			"args": ["stress_test_runner.py", "light_stress"],
+			"group": "test",
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "new",
+				"showReuseMessage": true,
+				"clear": false
+			},
+			"problemMatcher": [],
+			"detail": "Light stress test: 5 users, 1m duration, low search intensity"
+		},
+		{
+			"label": "🔥🔥 Stress Test - Medium",
+			"type": "shell",
+			"command": "python",
+			"args": ["stress_test_runner.py", "medium_stress"],
+			"group": "test",
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "new",
+				"showReuseMessage": true,
+				"clear": false
+			},
+			"problemMatcher": [],
+			"detail": "Medium stress test: 25 users, 5m duration, medium search intensity"
+		},
+		{
+			"label": "🔥🔥🔥 Stress Test - Heavy",
+			"type": "shell",
+			"command": "python",
+			"args": ["stress_test_runner.py", "heavy_stress"],
+			"group": "test",
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "new",
+				"showReuseMessage": true,
+				"clear": false
+			},
+			"problemMatcher": [],
+			"detail": "Heavy stress test: 50 users, 10m duration, high search intensity"
+		},
+		{
+			"label": "⚡ Stress Test - Spike",
+			"type": "shell",
+			"command": "python",
+			"args": ["stress_test_runner.py", "spike_test"],
+			"group": "test",
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "new",
+				"showReuseMessage": true,
+				"clear": false
+			},
+			"problemMatcher": [],
+			"detail": "Spike test: 100 users, 3m duration, extreme search intensity"
+		},
+				{
+			"label": "⚡⚡⚡ Extreme Stress Test - Spike",
+			"type": "shell",
+			"command": "python",
+			"args": ["stress_test_runner.py", "extreme_spike_test"],
+			"group": "test",
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "new",
+				"showReuseMessage": true,
+				"clear": false
+			},
+			"problemMatcher": [],
+			"detail": "Extreme spike test: 500 users, 2m duration, ultra_fast search intensity"
+		},
+		{
+			"label": "⏰ Stress Test - Endurance",
+			"type": "shell",
+			"command": "cmd",
+			"args": ["/c", "run_stress_test.bat", "endurance_test"],
+			"group": "test",
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "new",
+				"showReuseMessage": true,
+				"clear": false
+			},
+			"problemMatcher": [],
+			"detail": "Endurance test: 20 users, 30m duration, medium search intensity"
+		},
+		{
+			"label": "🔍 Stress Test - Search Focused",
+			"type": "shell",
+			"command": "cmd",
+			"args": ["/c", "run_stress_test.bat", "search_focused"],
+			"group": "test",
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "new",
+				"showReuseMessage": true,
+				"clear": false
+			},
+			"problemMatcher": [],
+			"detail": "Search-focused test: 30 users, 5m duration, extreme search intensity"
+		},
+		{
+			"label": "⚙️ Stress Test - Custom Configuration",
+			"type": "shell",
+			"command": "cmd",
+			"args": ["/c", "run_stress_test.bat", "custom"],
+			"group": "test",
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "new",
+				"showReuseMessage": true,
+				"clear": false
+			},
+			"problemMatcher": [],
+			"detail": "Custom test configuration: Edit stress_test_config.json to customize"
+		},
+		{
+			"label": "Setup Virtual Environment",
+			"type": "shell",
+			"command": "python",
+			"args": ["-m", "venv", "venv"],
+			"group": "build",
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			},
+			"problemMatcher": [],
+			"detail": "Create Python virtual environment for the project"
+		},
+		{
+			"label": "Install Dependencies",
+			"type": "shell",
+			"command": "powershell",
+			"args": ["-Command", "venv\\Scripts\\activate; pip install -r requirements.txt"],
+			"group": "build",
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			},
+			"problemMatcher": [],
+			"detail": "Install Python dependencies from requirements.txt",
+			"dependsOn": "Setup Virtual Environment"
+		},
+		{
+			"label": "Generate Analytics Report",
+			"type": "shell",
+			"command": "python",
+			"args": ["generate_report.py"],
+			"group": "build",
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": false
+			},
+			"problemMatcher": [],
+			"detail": "Generate comprehensive analytics report from test results"
+		},
+		{
+			"label": "Start Locust Web UI",
+			"type": "shell",
+			"command": "python",
+			"args": ["stress_test_runner.py", "web"],
+			"group": "build",
+			"isBackground": true,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "new",
+				"showReuseMessage": true,
+				"clear": true
+			},
+			"problemMatcher": [],
+			"detail": "Start Locust web interface for interactive load testing (http://localhost:8089)"
+		},
+		{
+			"label": "View Test Reports",
+			"type": "shell",
+			"command": "start",
+			"args": ["reports"],
+			"group": "build",
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": false
+			},
+			"problemMatcher": [],
+			"detail": "Open the reports folder in Windows Explorer"
+		},
+		{
+			"label": "Clean Reports",
+			"type": "shell",
+			"command": "powershell",
+			"args": ["-Command", "if (Test-Path 'reports') { Remove-Item 'reports' -Recurse -Force }; New-Item -ItemType Directory -Path 'reports' -Force; New-Item -ItemType Directory -Path 'reports\\metrics' -Force"],
+			"group": "build",
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": false
+			},
+			"problemMatcher": [],
+			"detail": "Clean all previous test reports and create fresh reports directory structure"
+		},
+		{
+			"label": "📋 Show Available Stress Tests",
+			"type": "shell",
+			"command": "python",
+			"args": ["stress_test_runner.py"],
+			"group": "build",
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			},
+			"problemMatcher": [],
+			"detail": "Display all available stress test configurations"
+		},
+		{
+			"label": "🧹 Organize Metrics Files",
+			"type": "shell",
+			"command": "powershell",
+			"args": ["-Command", "if (!(Test-Path 'reports\\metrics')) { New-Item -ItemType Directory -Path 'reports\\metrics' -Force }; Get-ChildItem '*metrics_*.csv', '*metrics_*.json' -ErrorAction SilentlyContinue | ForEach-Object { Move-Item $_.Name 'reports\\metrics\\' -Force }; Write-Host 'Metrics files organized in reports/metrics/'"],
+			"group": "build",
+			"isBackground": false,
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": false
+			},
+			"problemMatcher": [],
+			"detail": "Move any metrics files from root directory to reports/metrics/"
+		}
+	]
+}
