@@ -55,12 +55,19 @@ class SearchTasks:
         try:
             with self.user.client.get(search_url,
                                      catch_response=True,
+                                     allow_redirects=True,  # Explicitly allow redirects
                                      name=f"Search: {search_term}") as response:
                 
                 response_time = (time.time() - start_time) * 1000
                 
-                if response.status_code == 200:
+                # Handle redirect responses as success
+                if response.status_code in [200, 301, 302, 303, 307, 308]:
                     response.success()
+                    
+                    # Log redirects for debugging
+                    if response.status_code in [301, 302, 303, 307, 308]:
+                        final_url = response.url
+                        print(f"🔄 Search redirected to: {final_url}")
                     
                     # Parse search results
                     results_data = self._parse_search_results(response.text, search_term)
@@ -83,6 +90,7 @@ class SearchTasks:
                     return {
                         'status_code': response.status_code,
                         'search_term': f"{search_endpoint}?q={urllib.parse.quote(search_term)}",
+                        'final_url': response.url,  # Include final URL after redirects
                         'response_time': response_time,
                         **results_data
                     }
@@ -174,12 +182,19 @@ class SearchTasks:
         try:
             with self.user.client.get(category_url,
                                      catch_response=True,
+                                     allow_redirects=True,  # Explicitly allow redirects
                                      name=f"Category: {category_name}") as response:
                 
                 response_time = (time.time() - start_time) * 1000
                 
-                if response.status_code == 200:
+                # Handle redirect responses as success
+                if response.status_code in [200, 301, 302, 303, 307, 308]:
                     response.success()
+                    
+                    # Log redirects for debugging
+                    if response.status_code in [301, 302, 303, 307, 308]:
+                        final_url = response.url
+                        print(f"🔄 Category redirected to: {final_url}")
                     
                     results_data = self._parse_category_results(response.text, category_name)
                     
@@ -202,6 +217,7 @@ class SearchTasks:
                         'category_id': category_id,
                         'category_name': category_name,
                         'category_url': category_url,
+                        'final_url': response.url,  # Include final URL after redirects
                         'response_time': response_time,
                         **results_data
                     }
@@ -468,12 +484,19 @@ class SearchTasks:
         try:
             with self.user.client.get(subcategory_url,
                                      catch_response=True,
+                                     allow_redirects=True,  # Explicitly allow redirects
                                      name=f"Subcategory: {subcategory_name}") as response:
                 
                 response_time = (time.time() - start_time) * 1000
                 
-                if response.status_code == 200:
+                # Handle redirect responses as success
+                if response.status_code in [200, 301, 302, 303, 307, 308]:
                     response.success()
+                    
+                    # Log redirects for debugging
+                    if response.status_code in [301, 302, 303, 307, 308]:
+                        final_url = response.url
+                        print(f"🔄 Subcategory redirected to: {final_url}")
                     
                     results_data = self._parse_category_results(response.text, subcategory_name)
                     
@@ -497,6 +520,7 @@ class SearchTasks:
                         'subcategory_name': subcategory_name,
                         'parent_category': parent_category,
                         'subcategory_url': subcategory_url,
+                        'final_url': response.url,  # Include final URL after redirects
                         'response_time': response_time,
                         **results_data
                     }

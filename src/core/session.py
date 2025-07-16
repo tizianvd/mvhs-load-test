@@ -49,12 +49,16 @@ class EnhancedHTTPSession:
         """
         session = requests.Session()
         
+        # Enable automatic redirect following
+        session.max_redirects = 10  # Allow up to 10 redirects
+        
         # Configure retry strategy
         retry_strategy = Retry(
             total=self.max_retries,
             status_forcelist=[429, 500, 502, 503, 504],
             backoff_factor=self.backoff_factor,
-            raise_on_status=False
+            raise_on_status=False,
+            redirect=5  # Allow redirects in retry strategy
         )
         
         # Configure HTTP adapter with retry strategy
@@ -71,9 +75,15 @@ class EnhancedHTTPSession:
         # Set default timeout
         session.timeout = self.timeout
         
-        # Set user agent
+        # Set realistic browser headers to avoid blocking
         session.headers.update({
-            'User-Agent': 'MVHS-LoadTest/2.0 (Educational Testing Framework)'
+            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Language': 'de-DE,de;q=0.9,en;q=0.8',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'DNT': '1',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1'
         })
         
         return session
