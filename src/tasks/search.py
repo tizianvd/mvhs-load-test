@@ -12,7 +12,7 @@ from typing import Dict, Any, Optional, List
 from locust import task
 from bs4 import BeautifulSoup
 from src.core.metrics import metrics_collector
-from src.utils.search_utils import get_random_german_word
+from src.utils.search_utils import get_random_german_word, get_common_search_terms
 
 
 class SearchTasks:
@@ -30,7 +30,7 @@ class SearchTasks:
         self.endpoints = self.profile.get('endpoints', {})
         
     
-    def perform_search(self, search_term: Optional[str] = None) -> Optional[Dict[str, Any]]:
+    def perform_search(self, useCommonSearchTerms = False) -> Optional[Dict[str, Any]]:
         """
         Perform a search query.
         
@@ -41,8 +41,7 @@ class SearchTasks:
             Search results data dictionary or None if failed
         """
 
-        search_term = get_random_german_word()
-        search_term = search_term.upper()
+        search_term = (get_common_search_terms() if useCommonSearchTerms else get_random_german_word()).capitalize() 
         
         search_endpoint = self.endpoints.get('search', '/suche')
         

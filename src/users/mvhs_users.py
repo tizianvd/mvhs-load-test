@@ -60,17 +60,28 @@ class MVHSActiveUser(BaseWebsiteUser):
     wait_time = between(5, 15) 
     weight = 16 
     
-    @task(11)
+    @task(25)
     def perform_search(self):
         """Perform searches frequently."""
         result = self.search_tasks.perform_search()
         if result and result.get('has_results'):
             # Might look at first few results
-            if random.random() < 0.6:
+            if random.random() < 0.3:
                 self.navigation_tasks.view_course_details()
             self.wait_for_reading()
+
+    @task(30)
+    def perform_search_with_common_terms(self):
+        """Perform searches using common search terms."""
+        if self.should_perform_search():
+            result = self.search_tasks.perform_search(useCommonSearchTerms=True)
+            if result and result.get('has_results'):
+                # Might look at first few results
+                if random.random() < 0.3:
+                    self.navigation_tasks.view_course_details()
+                self.wait_for_reading()
     
-    @task(4)
+    @task(15)
     def browse_categories_thoroughly(self):
         """Browse categories and subcategories."""
         result = self.navigation_tasks.browse_categories()
@@ -80,19 +91,19 @@ class MVHSActiveUser(BaseWebsiteUser):
                 self.navigation_tasks.browse_subcategories()
             self.wait_for_reading()
     
-    @task(3)
+    @task(20)
     def search_by_category(self):
         """Search within specific categories."""
         result = self.search_tasks.search_courses_by_category()
         if result:
             self.wait_for_reading()
     
-    @task(1)
+    @task(5)
     def browse_homepage(self):
         """Visit homepage."""
         self.navigation_tasks.visit_homepage()
 
-    @task(1)
+    @task(5)
     def visit_static_pages(self):
         """Visit static informational pages."""
         result = self.navigation_tasks.visit_static_pages()
@@ -259,7 +270,7 @@ class MVHSMobileUser(BaseWebsiteUser):
             short_terms = [term for term in self.search_terms if len(term) <= 8]
             if short_terms:
                 search_term = random.choice(short_terms)
-                result = self.search_tasks.perform_search(search_term)
+                result = self.search_tasks.perform_search()
                 if result:
                     self.wait_for_reading()
     
