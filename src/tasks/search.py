@@ -12,7 +12,7 @@ from typing import Dict, Any, Optional, List
 from locust import task
 from bs4 import BeautifulSoup
 from src.core.metrics import metrics_collector
-from src.utils.search_utils import get_random_german_word, get_common_search_terms
+from src.utils.search_utils import get_random_german_word, get_random_common_search_term
 
 
 class SearchTasks:
@@ -41,7 +41,7 @@ class SearchTasks:
             Search results data dictionary or None if failed
         """
 
-        search_term = (get_common_search_terms() if useCommonSearchTerms else get_random_german_word()).capitalize() 
+        search_term = (get_random_common_search_term() if useCommonSearchTerms else get_random_german_word()).capitalize() 
         
         search_endpoint = self.endpoints.get('search', '/suche')
         
