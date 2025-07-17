@@ -6,7 +6,6 @@ german_words = top_n_list('de', 10000)
 def get_random_german_word():
     return random.choice(german_words)
 
-# returns common search terms for volkshochschule kurse
 def get_common_search_terms():
     return [
         "yoga",
@@ -26,3 +25,5 @@ def get_common_search_terms():
         "wissenschaft",
     ]
 
+def get_random_common_search_term():
+    return random.choice(get_common_search_terms())
